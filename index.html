@@ -102,7 +102,9 @@
 
           <h1 id="supported-retailers">Supported retailers</h1>
 
-<p>The table below shows the endpoints available for each retailer. We can add additional retailers upon request. Fill out the form at the <a href="https://zinc.io/#contact">bottom of our home page</a> for a quote for a particular retailer.</p>
+<p>The table below shows the endpoints available for each retailer. </p>
+
+<p>Note that this is a partial list. We support hundreds more retailers in beta. For details, please email support@zinc.io.</p>
 
 <table><thead>
 <tr>
@@ -196,7 +198,7 @@
 </tr>
 </tbody></table>
 
-<p><code class="prettyprint">*</code>Currently in unsupported beta.
+<p><code class="prettyprint">*</code>Currently in beta.
 <code class="prettyprint">†</code>Prime Pantry Items, Kindles, Alexa Products, and Digital items(eBooks and Digital movies) are not supported</p>
 
           <h1 id="orders">Orders</h1>
@@ -310,7 +312,7 @@
 <tr>
 <td>shipping_method</td>
 <td>String</td>
-<td>The desired shipping method for the object. Available methods are <code class="prettyprint">cheapest</code> (always select the cheapest method available), <code class="prettyprint">fastest</code> (always select the fastest method available), or <code class="prettyprint">free</code> (which will fail for items without some sort of free shipping). You must provide either this or the <code class="prettyprint">shipping</code> attribute, but not both.</td>
+<td>The desired shipping method for the object. Available methods are <code class="prettyprint">cheapest</code> (always select the cheapest method available), <code class="prettyprint">fastest</code> (always select the fastest method available), <code class="prettyprint">amazon_day</code> (choose default from Amazon or use amazon_day attribute from order), or <code class="prettyprint">free</code> (which will fail for items without some sort of free shipping). You must provide either this or the <code class="prettyprint">shipping</code> attribute, but not both.</td>
 </tr>
 <tr>
 <td>shipping</td>
@@ -387,6 +389,11 @@
 <td>affiliate_info</td>
 <td>Object</td>
 <td>(Amazon only) Add an Amazon affiliate tag to your order. Example value <code class="prettyprint">{&quot;tag&quot;: &quot;yourtag-20&quot;}</code></td>
+</tr>
+<tr>
+<td>amazon_day</td>
+<td>String</td>
+<td>(Amazon only) Specify exact name of Amazon Day shipping selection when shipp_method is set to <code class="prettyprint">amazon_day</code>.</td>
 </tr>
 </tbody></table>
 
