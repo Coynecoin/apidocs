@@ -501,6 +501,57 @@
 </tr>
 </tbody></table>
 
+<h2 id="retrieving-a-list-of-orders">Retrieving a list of orders</h2>
+
+<blockquote>
+<p>Example query for all Amazon orders (up to 5000) for June 1, 2019 14:00 - July 1, 2019 14:00</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders?limit=5000&amp;starting_after=1559397600000&amp;ending_before=1561989600000&amp;retailer=amazon"</span> <span class="se">\</span>
+  -u &lt;client_token&gt;:
+</code></pre>
+
+<p>To get a list of all orders within a specific timestamp range, use the order query and include these additional query parameters.</p>
+
+<h3 id="order-query-parameters">Order query parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>Number</td>
+<td>Maximum number of orders to return in the results (defaults to 10)</td>
+</tr>
+<tr>
+<td>skip</td>
+<td>Number</td>
+<td>Number of order responses to skip before including up to limit orders in results</td>
+</tr>
+<tr>
+<td>starting_after</td>
+<td>Number</td>
+<td>Timestamp of start of the range (inclusive)</td>
+</tr>
+<tr>
+<td>ending_before</td>
+<td>Number</td>
+<td>Timestamp of end of the range (exclusive)</td>
+</tr>
+<tr>
+<td>retailer</td>
+<td>String</td>
+<td>name of the retailer to include orders from</td>
+</tr>
+</tbody></table>
+
+<p>The timestamps are unix timestamps in milliseconds, which you can read about here <a href="https://en.wikipedia.org/wiki/Unix_time">unix timestamps</a>. To easily convert a human-readable date / time to a unix timestamp, you can use this <a href="https://www.epochconverter.com/">converter</a>.</p>
+
+<p>Sample code that includes an example of a bulk order query can be found in this github <a href="https://github.com/zincio/api-samples">repo</a>.</p>
+
 <h2 id="selecting-an-offer-amp-shipping">Selecting an offer &amp; shipping</h2>
 
 <p>When placing an order, each product will have multiple offers from different sellers each with their own shipping options. To address this, use a product&rsquo;s <a href="#seller-selection-criteria-object">seller selection criteria</a> to filter offers and an order&rsquo;s <a href="#shipping-object">shipping parameter</a> to specify shipping preferences. Below is an flowchart of the process used to filter offers and select a shipping option.</p>
@@ -3083,13 +3134,19 @@ accounts).</li>
 <h3 id="i-am-not-receiving-posts-to-the-my-webhook-urls">I am not receiving POSTs to the my webhook URLs.</h3>
 
 <ul>
-<li>Make sure that your server is configured to accept POST requests from any other server. To debug this, we recommend creating a <a href="https://requestb.in/">requestbin</a> URL, passing that in as your webhook, and looking at what the data that we returns looks like. This will also confirm to you that our webhooks are working properly.</li>
+<li>Make sure that your server is configured to accept POST requests from any other server. To debug this, we recommend creating a <a href="https://requestbin.com/">requestbin</a> URL, passing that in as your webhook, and looking at what the data that we returns looks like. This will also confirm to you that our webhooks are working properly.</li>
 </ul>
 
 <h3 id="why-am-i-getting-multiple-posts-to-my-order_placed-or-other-webhook">Why am I getting multiple POSTs to my “order_placed” or other webhook?</h3>
 
 <ul>
 <li>We will retry POSTing the webhook until you return a 200 status code, so make sure you are returning a 200 at your webhook endpoint.</li>
+</ul>
+
+<h3 id="do-you-have-any-sample-code-for-using-the-api">Do you have any sample code for using the API?</h3>
+
+<ul>
+<li>Sample code that includes an example of a bulk order query can be found in this github <a href="https://github.com/zincio/api-samples">repo</a>.</li>
 </ul>
 
       </div>
