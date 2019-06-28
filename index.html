@@ -1140,8 +1140,13 @@ does not exist.</p>
         <span class="s2">"UPC: 048526054381 013513034066"</span>,
         <span class="s2">"Item model number: 5438"</span>
     <span class="o">]</span>,
-    <span class="s2">"question_count"</span>: 26,
-    <span class="s2">"stars"</span>: 4.5,
+    <span class="s2">"question_count"</span>: 44,
+    <span class="s2">"stars"</span>: 4.4,
+    <span class="s2">"fresh"</span>: <span class="nb">false</span>,
+    <span class="s2">"pantry"</span>: <span class="nb">false</span>,
+    <span class="s2">"handmade"</span>: <span class="nb">false</span>,
+    <span class="s2">"digital"</span>: <span class="nb">false</span>,
+    <span class="s2">"buyapi_hint"</span>: <span class="nb">true</span>,
     <span class="s2">"price"</span>: 799
 <span class="o">}</span>
 </code></pre>
@@ -1279,6 +1284,31 @@ does not exist.</p>
 <td>asin</td>
 <td>String</td>
 <td>(Amazon only) The ASIN of the product</td>
+</tr>
+<tr>
+<td>fresh</td>
+<td>Boolean</td>
+<td>(Amazon only) True if the item is an Amazon Fresh item</td>
+</tr>
+<tr>
+<td>pantry</td>
+<td>Boolean</td>
+<td>(Amazon only) True if the item is an Amazon Pantry item</td>
+</tr>
+<tr>
+<td>handmade</td>
+<td>Boolean</td>
+<td>(Amazon only) True if the item is an Amazon Handmade item</td>
+</tr>
+<tr>
+<td>digital</td>
+<td>Boolean</td>
+<td>(Amazon only) True if the item is a digital-only item (software subscription, downloadable software, digital video, game codes, etc.)</td>
+</tr>
+<tr>
+<td>buyapi_hint</td>
+<td>Boolean</td>
+<td>(Amazon only) False if the item cannot be ordered via the buyapi, True if it might be orderable</td>
 </tr>
 <tr>
 <td>item_number</td>
@@ -2993,6 +3023,10 @@ regularly updated by Zinc with information about the status of the case.</p>
 <tr>
 <td>invalid_variant</td>
 <td>One of the product variants you provided was not valid.</td>
+</tr>
+<tr>
+<td>item_not_supported</td>
+<td>The item is not supported via the buyapi - likely a digital or handmade item</td>
 </tr>
 <tr>
 <td>manual_review_required</td>
