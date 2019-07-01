@@ -634,6 +634,26 @@ There are a few options for resolving this issue.</p>
 <li>Forward all emails from your Amazon account&rsquo;s email to <a href="mailto:email@quail.zinc.io">email@quail.zinc.io</a>. AutoOrdering will automatically parse the incoming email and fill in the code. For instructions on how to forward from a Gmail account, <a href="https://support.google.com/mail/answer/10957?hl=en">see this article</a>.</li>
 </ul>
 
+<h2 id="retrying-an-order">Retrying an order</h2>
+
+<p>Sometimes an order will fail for reasons that are temporary. In these situations, orders can be retried after the temporary conditions are resolved. A successful order retry response contains the request_id of the new order.</p>
+
+<blockquote>
+<p>Example order retry request</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/retry"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -u &lt;client_token&gt;:
+</code></pre>
+
+<blockquote>
+<p>Example successful order retry response</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="o">{</span>
+  <span class="s2">"request_id"</span>: <span class="s2">"3f1c939065cf58e7b9f0aea70640dffc"</span>
+<span class="o">}</span>
+</code></pre>
+
           <h1 id="cancellations">Cancellations</h1>
 
 <h2 id="initiate-a-cancellation">Initiate a cancellation</h2>
