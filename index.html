@@ -2389,6 +2389,8 @@ regularly updated by Zinc with information about the status of the case.</p>
 
 <p>As an example, let&rsquo;s say you have just created an order via the Zinc API. Every time the order status changes, a <code class="prettyprint">POST</code> request will be sent to the URL that you passed in the <code class="prettyprint">status_updated</code> parameter of the webhooks object. The body will mimic the response received from the standard <code class="prettyprint">GET https://api.zinc.io/v1/orders/&lt;request_id&gt;</code> request. A webhook will also be sent if order fails, gets placed, or if tracking gets updated.</p>
 
+<p>Note that the <code class="prettyprint">case_updated</code> webhook is specifically for ZMA order cases.</p>
+
 <blockquote>
 <p>Example webhooks object</p>
 </blockquote>
@@ -2396,7 +2398,8 @@ regularly updated by Zinc with information about the status of the case.</p>
   <span class="s2">"request_succeeded"</span>: <span class="s2">"http://mywebsite.com/zinc/request_placed"</span>,
   <span class="s2">"request_failed"</span>: <span class="s2">"http://mywebsite.com/zinc/request_failed"</span>,
   <span class="s2">"tracking_obtained"</span>: <span class="s2">"http://mywebsite.com/zinc/tracking_obtained"</span>,
-  <span class="s2">"status_updated"</span>: <span class="s2">"http://mywebsite.com/zinc/status_updated"</span>
+  <span class="s2">"status_updated"</span>: <span class="s2">"http://mywebsite.com/zinc/status_updated"</span>,
+  <span class="s2">"case_updated"</span>: <span class="s2">"http://mywebsite.com/zinc/case_updated"</span>
 <span class="o">}</span>
 </code></pre>
 
