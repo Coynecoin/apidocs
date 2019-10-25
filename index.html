@@ -383,7 +383,7 @@
 <tr>
 <td>strict_expired_product_id</td>
 <td>Boolean</td>
-<td>Defaults to false. If true, we will fail orderes where the product_id is &ldquo;expired&rdquo; or &ldquo;deprecated&rdquo;. If unset or false, Amazon redirects us to a valid product_id and we buy that one.</td>
+<td>Defaults to false. If true, we will fail orders where the product_id is &ldquo;expired&rdquo; or &ldquo;deprecated&rdquo;. If unset or false, Amazon redirects us to a valid product_id and we buy that one.</td>
 </tr>
 <tr>
 <td>po_number</td>
@@ -394,6 +394,11 @@
 <td>amazon_day</td>
 <td>String</td>
 <td>(Amazon only) Specify exact name of Amazon Day shipping selection when ship_method is set to <code class="prettyprint">amazon_day</code>.</td>
+</tr>
+<tr>
+<td>fail_if_taxed</td>
+<td>Boolean</td>
+<td>Defaults to false. If true, we will fail orders where taxes are included in the total. Useful for ZMA orders that are hoping to be placed tax-exempt.</td>
 </tr>
 </tbody></table>
 
