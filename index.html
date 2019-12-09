@@ -398,7 +398,12 @@
 <tr>
 <td>fail_if_taxed</td>
 <td>Boolean</td>
-<td>Defaults to false. If true, we will fail orders where taxes are included in the total. Useful for ZMA orders that are hoping to be placed tax-exempt.</td>
+<td>Defaults to false. If true, we will fail orders where taxes are included in the total. Useful for ZMA orders must be placed tax-exempt.</td>
+</tr>
+<tr>
+<td>zma_discount</td>
+<td>Number</td>
+<td>The percent below (or above, if negative) face value that you will be charged for this order. Can range from -50 to 0. Lower discount orders will be processed before higher discount orders. If discount is too high and we are unable to secure ordering at that discount, the order will time out with zma_temporarily_overloaded. Defaults to 0%.</td>
 </tr>
 </tbody></table>
 
@@ -2084,6 +2089,48 @@ regularly updated by Zinc with information about the status of the case.</p>
   -H <span class="s1">'Content-type: application/json'</span> <span class="se">\</span>
   -d <span class="s1">'{"message": "I have an update on this case"}'</span>
 </code></pre>
+
+          <h1 id="proxies">Proxies</h1>
+
+<p>The Zinc API interfaces with the reatilers via proxies. This enables each retailer interaction to use unique and consistent IP addressing. Due to many factors, sometimes the bulk proxies available to us become blocked by retailers. The best path to keeping your own account from being blocked is to provide your own proxy service, by either hosting your own proxy or purchasing a proxy from a provider. We call this &ldquo;bring-your-own-proxy&rdquo; (BYOP).</p>
+
+<h2 id="configure-zincapi-for-your-own-proxy-byop">Configure ZincAPI for your own proxy (BYOP)</h2>
+
+<blockquote>
+<p>Example BYOP configuration</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/cancel"</span> <span class="se">\</span>
+  -X POST <span class="se">\</span>
+  -u &lt;client_token&gt;: <span class="se">\</span>
+</code></pre>
+
+<h2 id="query-zincapi-for-current-byop-details">Query ZincAPI for current BYOP details</h2>
+
+<h3 id="byop-attributes">BYOP attributes</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>retailer</td>
+<td>string</td>
+<td>Single-word name representing the retailer</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email address used as account with the retailer</td>
+</tr>
+<tr>
+<td>proxy_url</td>
+<td>string</td>
+<td>Full HTTP proxy connection string for proxy service</td>
+</tr>
+</tbody></table>
 
           <h1 id="object-reference">Object reference</h1>
 
