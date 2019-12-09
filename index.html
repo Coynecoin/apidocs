@@ -2092,19 +2092,29 @@ regularly updated by Zinc with information about the status of the case.</p>
 
           <h1 id="proxies">Proxies</h1>
 
-<p>The Zinc API interfaces with the reatilers via proxies. This enables each retailer interaction to use unique and consistent IP addressing. Due to many factors, sometimes the bulk proxies available to us become blocked by retailers. The best path to keeping your own account from being blocked is to provide your own proxy service, by either hosting your own proxy or purchasing a proxy from a provider. We call this &ldquo;bring-your-own-proxy&rdquo; (BYOP).</p>
+<p>The Zinc API interfaces with the retailers via proxies. This enables each retailer interaction session to use unique and consistent IP addressing. Due to many factors, sometimes the bulk proxies available to us become blocked by retailers. The best path to keeping your own account from being blocked is to provide your own proxy service, by either hosting your own proxy or purchasing a proxy from a provider. We call this &ldquo;bring-your-own-proxy&rdquo; (BYOP).</p>
 
 <h2 id="configure-zincapi-for-your-own-proxy-byop">Configure ZincAPI for your own proxy (BYOP)</h2>
 
 <blockquote>
 <p>Example BYOP configuration</p>
 </blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/orders/&lt;request_id&gt;/cancel"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/proxies/byop"</span> <span class="se">\</span>
+  -X PUT <span class="se">\</span>
   -u &lt;client_token&gt;: <span class="se">\</span>
+  -d <span class="s1">'{"retailer":"amazon","email":"youremail@youremail.com","proxy_url":"http://proxy_user:proxy_password@192.168.1.1:1234"}'</span>
 </code></pre>
 
 <h2 id="query-zincapi-for-current-byop-details">Query ZincAPI for current BYOP details</h2>
+
+<blockquote>
+<p>Example query of existing BYOP configuration</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/proxies/byop"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -u &lt;client_token&gt;: <span class="se">\</span>
+  -d <span class="s1">'{"retailer":"amazon","email":"youremail@youremail.com"}'</span>
+</code></pre>
 
 <h3 id="byop-attributes">BYOP attributes</h3>
 
@@ -2129,6 +2139,32 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>proxy_url</td>
 <td>string</td>
 <td>Full HTTP proxy connection string for proxy service</td>
+</tr>
+</tbody></table>
+
+<p>The proxy_url components are as follows:</p>
+
+<table><thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>proxy_user</td>
+<td>Username for the proxy service account</td>
+</tr>
+<tr>
+<td>proxy_password</td>
+<td>Password for the proxy service account</td>
+</tr>
+<tr>
+<td>proxy_ip</td>
+<td>IP address of the proxy server (sample shows 192.168.1.1)</td>
+</tr>
+<tr>
+<td>proxy_port</td>
+<td>Port number of the proxy server (sample shows 1234)</td>
 </tr>
 </tbody></table>
 
