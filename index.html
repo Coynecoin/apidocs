@@ -2096,27 +2096,7 @@ regularly updated by Zinc with information about the status of the case.</p>
 
 <h2 id="configure-zincapi-for-your-own-proxy-byop">Configure ZincAPI for your own proxy (BYOP)</h2>
 
-<blockquote>
-<p>Example BYOP configuration</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/proxies/byop"</span> <span class="se">\</span>
-  -X PUT <span class="se">\</span>
-  -u &lt;client_token&gt;: <span class="se">\</span>
-  -d <span class="s1">'{"retailer":"amazon","email":"youremail@youremail.com","proxy_url":"http://proxy_user:proxy_password@192.168.1.1:1234"}'</span>
-</code></pre>
-
-<h2 id="query-zincapi-for-current-byop-details">Query ZincAPI for current BYOP details</h2>
-
-<blockquote>
-<p>Example query of existing BYOP configuration</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/proxies/byop"</span> <span class="se">\</span>
-  -X GET <span class="se">\</span>
-  -u &lt;client_token&gt;: <span class="se">\</span>
-  -d <span class="s1">'{"retailer":"amazon","email":"youremail@youremail.com"}'</span>
-</code></pre>
-
-<h3 id="byop-attributes">BYOP attributes</h3>
+<p>To configure a BYOP, you must provide the retailer, email account, and full proxy connection URL.</p>
 
 <table><thead>
 <tr>
@@ -2167,6 +2147,30 @@ regularly updated by Zinc with information about the status of the case.</p>
 <td>Port number of the proxy server (sample shows 1234)</td>
 </tr>
 </tbody></table>
+
+<blockquote>
+<p>Example BYOP configuration</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/proxies/byop"</span> <span class="se">\</span>
+  -X PUT <span class="se">\</span>
+  -u &lt;client_token&gt;: <span class="se">\</span>
+  -d <span class="s1">'{"retailer":"amazon","email":"youremail@youremail.com","proxy_url":"http://proxy_user:proxy_password@192.168.1.1:1234"}'</span>
+</code></pre>
+
+<h2 id="query-zincapi-for-current-byop-details">Query ZincAPI for current BYOP details</h2>
+
+<p>You can also query the Zinc API for the current BYOP configuration of a specific retailer account. If the account is configured for BYOP, the full proxy information will be returned in the JSON response. If the account is configured for one of our internall proxies, the response will be successful (200) with an empty JSON body.</p>
+
+<blockquote>
+<p>Example query of existing BYOP configuration</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.zinc.io/v1/proxies/byop"</span> <span class="se">\</span>
+  -X GET <span class="se">\</span>
+  -u &lt;client_token&gt;: <span class="se">\</span>
+  -d <span class="s1">'{"retailer":"amazon","email":"youremail@youremail.com"}'</span>
+</code></pre>
+
+<h3 id="byop-attributes">BYOP attributes</h3>
 
           <h1 id="object-reference">Object reference</h1>
 
